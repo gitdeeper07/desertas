@@ -10,9 +10,15 @@
 ---
 
 [![DOI](https://img.shields.io/badge/DOI-10.14293%2FDESERTAS.2026.001-blue)](https://doi.org/10.14293/DESERTAS.2026.001)
+[![Dataset](https://img.shields.io/badge/Dataset-Zenodo-blue)](https://doi.org/10.5281/zenodo.18820679)
+[![PyPI](https://img.shields.io/badge/PyPI-desertas%201.0.0-orange)](https://pypi.org/project/desertas/1.0.0/)
 [![Dashboard](https://img.shields.io/badge/Dashboard-Live-green)](https://desert-as.netlify.app)
+[![OSF](https://img.shields.io/badge/OSF-Preregistered-blue)](https://doi.org/10.17605/OSF.IO/VZ6PS)
+[![ScienceOpen](https://img.shields.io/badge/ScienceOpen-Preprint-lightblue)](https://www.scienceopen.com)
+[![Open Data](https://img.shields.io/badge/Open%20Data-CC--BY%204.0-brightgreen)](https://doi.org/10.5281/zenodo.18820679)
+[![License: MIT](https://img.shields.io/badge/Code-MIT-orange)](LICENSE)
+[![No COI](https://img.shields.io/badge/COI-None%20Declared-green)](https://doi.org/10.14293/DESERTAS.2026.001)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0003--8903--0029-brightgreen)](https://orcid.org/0009-0003-8903-0029)
-[![License](https://img.shields.io/badge/License-Research-orange)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Submitted%20to%20Nature%20Geoscience-purple)](https://doi.org/10.14293/DESERTAS.2026.001)
 
 **Principal Investigator:** [Samir Baladi](mailto:gitdeeper@gmail.com) · Ronin Institute / Rite of Renaissance  
@@ -482,7 +488,37 @@ DESERTAS is the **sixth framework** in a unified Bayesian multi-parameter resear
 
 ---
 
-## 🙏 Acknowledgments
+## 🔗 Links
+
+| Platform | URL |
+|----------|-----|
+| 🦊 **GitLab** (Primary) | [gitlab.com/gitdeeper07/desertas](https://gitlab.com/gitdeeper07/desertas) |
+| 📦 **GitHub** (Mirror) | [github.com/gitdeeper07/desertas](https://github.com/gitdeeper07/desertas) |
+| 🪣 **Bitbucket** | [bitbucket.org/gitdeeper07/desertas](https://bitbucket.org/gitdeeper07/desertas) |
+| 🏔️ **Codeberg** | [codeberg.org/gitdeeper07/desertas](https://codeberg.org/gitdeeper07/desertas) |
+| 📡 **Dashboard** | [desert-as.netlify.app](https://desert-as.netlify.app) |
+| 📚 **Documentation** | [desert-as.netlify.app/documentation](https://desert-as.netlify.app/documentation) |
+| 📑 **Reports** | [desert-as.netlify.app/reports](https://desert-as.netlify.app/reports) |
+| 📄 **Research Paper** | [doi.org/10.14293/DESERTAS.2026.001](https://doi.org/10.14293/DESERTAS.2026.001) |
+| 💾 **Dataset (Zenodo)** | [doi.org/10.5281/zenodo.18820679](https://doi.org/10.5281/zenodo.18820679) |
+| 📋 **OSF Preregistration** | [doi.org/10.17605/OSF.IO/VZ6PS](https://doi.org/10.17605/OSF.IO/VZ6PS) |
+| 🌐 **ScienceOpen Preprint** | [ScienceOpen](https://www.scienceopen.com/document?vid=717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066) |
+| 📦 **PyPI Package** | [pypi.org/project/desertas/1.0.0](https://pypi.org/project/desertas/1.0.0/) |
+| 🔬 **ORCID** | [0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029) |
+
+---
+
+## 📰 Preprint
+
+DESERTAS is published as an open-access preprint on **ScienceOpen Preprints** (March 1, 2026), under Creative Commons Attribution License CC BY 4.0. The preprint has been submitted to *Nature Geoscience* (Manuscript ID: DESERTAS-2026-001).
+
+> Baladi, S. (2026). *DESERTAS: Desert Emission Sensing & Energetic Rock-Tectonic Analysis System — A Quantitative Framework for Decoding Geogenic Gas Emissions, Tectonic Pulse Detection, and Pre-Seismic Geochemical Forecasting in Arid Cratons: The Desert Breathes.* ScienceOpen Preprints. [SO-VID: 717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066](https://www.scienceopen.com/document?vid=717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066)
+
+**Funding acknowledged:** National Geographic Society · Google Research · Ronin Institute
+
+---
+
+
 
 The author thanks the 36 national geological surveys and protected area authorities for monitoring infrastructure access; the USGS, ISC, and regional seismological networks for open-access earthquake catalogs; the **San community monitors** of the Northern Cape for traditional rock-breath observational records integrated under FPIC protocols; the **Wangkatja (Martu) traditional landowners** of the Western Gibson Desert for geological lineament knowledge informing station siting; the ESA Copernicus Program; and the Global Seismographic Network (GSN).
 
