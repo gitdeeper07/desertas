@@ -1,0 +1,181 @@
+# 🏜️ DESERTAS Git Ignore
+# Desert Emission Sensing & Energetic Rock-Tectonic Analysis System
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+*.cover
+*.py,cover
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.ruff_cache/
+*.orig
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+MANIFEST
+*.tar.gz
+*.whl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Data files
+*.csv
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.nc
+*.db
+*.sqlite
+*.sqlite3
+*.parquet
+*.feather
+*.pkl
+*.pickle
+*.joblib
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Local configuration
+config/local.yaml
+config/*.local.yaml
+*.local
+*.secret
+secrets/
+.env.local
+.env.*.local
+
+# Field data
+data/field/
+data/raw/
+data/processed/
+data/temp/
+data/cache/
+data/uploads/
+data/backups/
+data/archive/
+
+# Model checkpoints
+models/checkpoints/
+models/*.h5
+models/*.pth
+models/*.pt
+models/*.pkl
+models/*.joblib
+models/*.onnx
+models/*.tflite
+
+# Dashboard build
+dashboard/dist/
+dashboard/build/
+dashboard/node_modules/
+dashboard/.next/
+dashboard/out/
+dashboard/.cache
+
+# Documentation
+docs/_build/
+docs/build/
+docs/source/generated/
+site/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.pid
+*.sock
+
+# SSL certificates
+*.crt
+*.key
+*.pem
+ssl/
+
+# Backup files
+*.bak
+*.backup
+backups/
+
+# Environment files
+.env
+.env.production
+.env.development
+.env.test
+.flaskenv
+
+# Secrets
+secrets.yaml
+secrets.yml
+credentials.json
+service-account.json
+*.p12
+*.pfx
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.cache
+*.lock
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Termux specific
+.storage/
+.termux/
+
+# Keep directory structure but ignore contents
+data/field/*
+!data/field/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+logs/*
+!logs/.gitkeep
+backups/*
+!backups/.gitkeep
+
+# 🏜️ The desert breathes. DESERTAS decodes.

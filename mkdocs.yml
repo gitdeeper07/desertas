@@ -1,0 +1,51 @@
+site_name: DESERTAS Documentation
+site_description: Desert Emission Sensing & Energetic Rock-Tectonic Analysis System
+site_author: Samir Baladi
+site_url: https://desertas.netlify.app
+
+repo_name: gitdeeper4/desertas
+repo_url: https://gitlab.com/gitdeeper4/desertas
+edit_uri: ""
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: amber
+    accent: yellow
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Framework: framework.md
+  - Parameters: parameters.md
+  - AI Ensemble: ai.md
+  - API Reference: api.md
+  - Case Studies: case-studies.md
+  - Reports: reports.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.com/gitdeeper4/desertas
+    - icon: fontawesome/brands/github
+      link: https://github.com/gitdeeper4/desertas
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:gitdeeper@gmail.com
+
+copyright: Copyright &copy; 2026 Samir Baladi

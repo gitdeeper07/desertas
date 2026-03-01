@@ -1,0 +1,24 @@
+# اختبارات DESERTAS
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-xdist>=3.0.0
+pytest-timeout>=2.0.0
+
+# أدوات الاختبار
+coverage>=7.0.0
+mock>=5.0.0
+factory-boy>=3.0.0
+faker>=18.0.0
+
+# للتقارير
+hypothesis>=6.0.0  # لتوليد بيانات الاختبار
+parameterized>=0.9.0
+
+# للتكامل
+requests-mock>=1.10.0
+responses>=0.23.0
+
+# للتقييم
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0

@@ -1,0 +1,317 @@
+# 🏜️ DESERTAS Docker Compose Configuration
+# Full stack deployment for Desert Gas Intelligence Framework
+# Dashboard: https://desertas.netlify.app
+# API: https://desertas.netlify.app/api
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: desertas-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: desertas
+      POSTGRES_USER: desertas_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-change_me_in_production}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backups:/backups
+    ports:
+      - "5432:5432"
+    networks:
+      - desertas-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U desertas_user -d desertas"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Redis for caching and task queue
+  redis:
+    image: redis:7-alpine
+    container_name: desertas-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_pass}
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - desertas-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # DESERTAS API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: desertas:1.0.0
+    container_name: desertas-api
+    restart: unless-stopped
+    command: api
+    environment:
+      DESERTAS_CONFIG: /etc/desertas/config.yaml
+      DESERTAS_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: desertas
+      DB_USER: desertas_user
+      DB_PASSWORD: ${DB_PASSWORD:-change_me_in_production}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis_pass}
+      API_URL: https://desertas.netlify.app/api
+      PUBLIC_URL: https://desertas.netlify.app
+      SECRET_KEY: ${SECRET_KEY:-change_me_in_production}
+      JWT_SECRET: ${JWT_SECRET:-change_me_in_production}
+    volumes:
+      - ./config:/etc/desertas:ro
+      - ./data:/data
+      - ./logs:/var/log/desertas
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - desertas-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # DESERTAS Dashboard (Streamlit)
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: desertas:1.0.0
+    container_name: desertas-dashboard
+    restart: unless-stopped
+    command: dashboard
+    environment:
+      DESERTAS_CONFIG: /etc/desertas/config.yaml
+      DESERTAS_ENV: production
+      API_URL: http://api:8000
+      PUBLIC_API_URL: https://desertas.netlify.app/api
+      PUBLIC_URL: https://desertas.netlify.app
+    volumes:
+      - ./config:/etc/desertas:ro
+      - ./data:/data
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - desertas-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Celery Worker for background tasks
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: desertas:1.0.0
+    container_name: desertas-worker
+    restart: unless-stopped
+    command: worker
+    environment:
+      DESERTAS_CONFIG: /etc/desertas/config.yaml
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: desertas
+      DB_USER: desertas_user
+      DB_PASSWORD: ${DB_PASSWORD:-change_me_in_production}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis_pass}
+    volumes:
+      - ./config:/etc/desertas:ro
+      - ./data:/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - desertas-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: desertas-nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./www:/var/www/html:ro
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api
+      - dashboard
+    networks:
+      - desertas-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Backup service
+  backup:
+    image: postgres:15-alpine
+    container_name: desertas-backup
+    restart: unless-stopped
+    command: |
+      sh -c "
+      apk add --no-cache aws-cli curl &&
+      while true; do
+        TIMESTAMP=$$(date +%Y%m%d_%H%M%S)
+        echo "🔄 Starting backup at $$TIMESTAMP"
+        
+        # Database backup
+        PGPASSWORD=$$DB_PASSWORD pg_dump -h postgres -U desertas_user desertas | gzip > /backups/db_$$TIMESTAMP.sql.gz
+        
+        # Upload to S3 if configured
+        if [ ! -z "$$AWS_ACCESS_KEY_ID" ]; then
+          aws s3 cp /backups/db_$$TIMESTAMP.sql.gz s3://$$S3_BUCKET/database/
+          echo "✅ Uploaded to S3"
+        fi
+        
+        # Clean old backups (keep 30 days)
+        find /backups -type f -name "*.sql.gz" -mtime +30 -delete
+        
+        echo "✅ Backup completed at $$TIMESTAMP"
+        sleep 86400  # 24 hours
+      done"
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD:-change_me_in_production}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      S3_BUCKET: ${S3_BUCKET:-desertas-backups}
+    volumes:
+      - ./backups:/backups
+      - ~/.aws:/root/.aws:ro
+    depends_on:
+      - postgres
+    networks:
+      - desertas-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Monitoring with Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: desertas-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - "9090:9090"
+    networks:
+      - desertas-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: desertas-grafana
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - desertas-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  desertas-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+# 🏜️ The desert breathes. DESERTAS decodes.

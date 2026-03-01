@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "station": "DES-TA-02",
+    "craton": "Tarim Basin",
+    "date": "2026-02-28",
+    "generated": "2026-02-28T19:28:51.685199"
+  },
+  "drgis": {
+    "score": 0.512,
+    "alert_level": "ALERT",
+    "lead_time_days": 52
+  },
+  "parameters": {
+    "\u0394\u03a6_th": 0.265,
+    "\u03a8_crack": 0.457,
+    "Rn_pulse": 3.84,
+    "\u03a9_arid": 0.848,
+    "\u0393_geo": 2.23,
+    "He_ratio": 1.92,
+    "\u03b2_dust": 0.294,
+    "S_yield": 0.723
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-28T19:21:51.660342",
+  "stations": [
+    {
+      "id": "DES-MA-02",
+      "drgis": 0.596,
+      "alert": "ALERT"
+    },
+    {
+      "id": "DES-SA-01",
+      "drgis": 0.412,
+      "alert": "WATCH"
+    },
+    {
+      "id": "DES-CL-03",
+      "drgis": 0.338,
+      "alert": "WATCH"
+    }
+  ],
+  "summary": {
+    "total_stations": 36,
+    "active_alerts": 12,
+    "mean_drgis": 0.44
+  }
+}

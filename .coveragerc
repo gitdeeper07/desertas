@@ -1,0 +1,76 @@
+# 🏜️ DESERTAS Coverage Configuration
+# Desert Emission Sensing & Energetic Rock-Tectonic Analysis System
+
+[run]
+source = desertas
+omit =
+    */tests/*
+    */test_*.py
+    */__init__.py
+    */_version.py
+    */conftest.py
+    */setup.py
+    */docs/*
+    */examples/*
+    */notebooks/*
+    */scripts/*
+    */.venv/*
+    */venv/*
+    */env/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    if __name__ == .__main__.:
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if False:
+    if None:
+    pass
+    @abc.abstractmethod
+    @abstractmethod
+    @overload
+
+ignore_errors = True
+omit =
+    */tests/*
+    */test_*.py
+    */__init__.py
+    *_version.py
+
+[html]
+directory = coverage_html_report
+title = DESERTAS Coverage Report
+extra_css = .cov_desertas_css
+
+[xml]
+output = coverage.xml
+
+[json]
+output = coverage.json
+
+[paths]
+source =
+    src/
+    */site-packages/
+
+# Minimum coverage thresholds
+[report:desertas.parameters]
+fail_under = 95
+
+[report:desertas.core]
+fail_under = 90
+
+[report:desertas.ai]
+fail_under = 85
+
+[report:desertas.cli]
+fail_under = 80
+
+[report:desertas.api]
+fail_under = 75
+
+# 🏜️ The desert breathes. DESERTAS decodes.

@@ -1,0 +1,119 @@
+# netlify.toml - DESERTAS Configuration
+# Live dashboard: https://desertas.netlify.app
+# API: https://desertas.netlify.app/api
+
+[build]
+command = "mkdocs build"
+publish = "site"
+
+[build.environment]
+PYTHON_VERSION = "3.9"
+NODE_VERSION = "18"
+MKDOCS_CONFIG = "mkdocs.yml"
+
+# Production environment
+[context.production]
+environment = { MKDOCS_CONFIG = "mkdocs.yml", DESERTAS_ENV = "production", API_URL = "https://desertas.netlify.app/api" }
+
+# Deploy previews
+[context.deploy-preview]
+environment = { MKDOCS_CONFIG = "mkdocs.yml", DESERTAS_ENV = "preview", API_URL = "https://desertas.netlify.app/api" }
+
+# Branch deploys
+[context.branch-deploy]
+environment = { MKDOCS_CONFIG = "mkdocs.yml", DESERTAS_ENV = "branch", API_URL = "https://desertas.netlify.app/api" }
+
+# Redirects
+[[redirects]]
+from = "/"
+to = "/index.html"
+status = 200
+
+[[redirects]]
+from = "/docs/*"
+to = "/documentation/:splat"
+status = 301
+
+[[redirects]]
+from = "/api/*"
+to = "https://desertas.netlify.app/api/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/dashboard"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/paper"
+to = "https://doi.org/10.14293/DESERTAS.2026.001"
+status = 302
+
+[[redirects]]
+from = "/doi"
+to = "https://doi.org/10.14293/DESERTAS.2026.001"
+status = 302
+
+[[redirects]]
+from = "/gitlab"
+to = "https://gitlab.com/gitdeeper4/desertas"
+status = 302
+
+[[redirects]]
+from = "/github"
+to = "https://github.com/gitdeeper4/desertas"
+status = 302
+
+[[redirects]]
+from = "/pypi"
+to = "https://pypi.org/project/desertas"
+status = 302
+
+# Headers for security and API access
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Cache-Control = "public, max-age=3600"
+
+# API-specific headers
+[[headers]]
+for = "/api/*"
+[headers.values]
+Access-Control-Allow-Origin = "https://desertas.netlify.app"
+Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+Access-Control-Allow-Headers = "Content-Type, Authorization"
+Content-Type = "application/json"
+
+# Cache static assets
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache HTML files
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+# Plugins
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+
+[[plugins]]
+package = "netlify-plugin-cache-docs"
+
+# Functions (serverless API)
+[functions]
+directory = "netlify/functions"
+node_bundler = "esbuild"
+
+# Edge functions
+[[edge_functions]]
+function = "auth"
+path = "/api/*"

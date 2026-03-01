@@ -1,0 +1,10 @@
+# Netlify Redirects (بديل)
+/             /index.html                      200
+/docs/*       /documentation/:splat             301
+/api/*        https://desertas.netlify.app/api/:splat 200
+/dashboard    /                                 301
+/paper        https://doi.org/10.14293/DESERTAS.2026.001 302
+/doi          https://doi.org/10.14293/DESERTAS.2026.001 302
+/gitlab       https://gitlab.com/gitdeeper4/desertas 302
+/github       https://github.com/gitdeeper4/desertas 302
+/pypi         https://pypi.org/project/desertas 302

@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "date": "2026-02-28",
+    "timestamp": "2026-02-28T19:27:05",
+    "version": "1.0.0",
+    "type": "integrated_report"
+  },
+  "summary": {
+    "total_stations": 36,
+    "critical": 1,
+    "emergency": 2,
+    "alert": 5,
+    "watch": 12,
+    "background": 16,
+    "mean_drgis": 0.473
+  },
+  "stations": [
+    {"id": "DES-SC-01", "craton": "Scandinavian", "drgis": 0.623, "alert": "CRITICAL", "lead_time": 29},
+    {"id": "DES-MA-02", "craton": "Saharan", "drgis": 0.596, "alert": "EMERGENCY", "lead_time": 58},
+    {"id": "DES-TA-02", "craton": "Tarim", "drgis": 0.512, "alert": "EMERGENCY", "lead_time": 52},
+    {"id": "DES-KA-04", "craton": "Kaapvaal", "drgis": 0.445, "alert": "ALERT", "lead_time": 44},
+    {"id": "DES-SA-01", "craton": "Arabian", "drgis": 0.412, "alert": "ALERT", "lead_time": 63},
+    {"id": "DES-CL-03", "craton": "Atacama", "drgis": 0.338, "alert": "WATCH", "lead_time": 71},
+    {"id": "DES-AU-06", "craton": "Yilgarn", "drgis": 0.284, "alert": "BACKGROUND", "lead_time": 38}
+  ],
+  "recommendations": {
+    "immediate": ["DES-SC-01 evacuation prep", "Civil protection notification"],
+    "urgent": ["DES-TA-02 emergency plan", "DES-MA-02 enhanced monitoring"],
+    "high": ["ALERT stations structural assessment", "Public communication"],
+    "medium": ["WATCH stations maintenance", "Data quality review"],
+    "low": ["BACKGROUND routine monitoring"]
+  }
+}

@@ -1,0 +1,97 @@
+# 🏜️ DESERTAS Git Attributes
+# Desert Emission Sensing & Energetic Rock-Tectonic Analysis System
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Python
+*.py text diff=python
+*.pyx text diff=python
+*.pxd text diff=python
+*.pyi text diff=python
+
+# Documentation
+*.md text
+*.rst text
+*.txt text
+*.tex text
+*.pdf binary
+
+# Configuration
+*.yml text
+*.yaml text
+*.json text
+*.toml text
+*.ini text
+*.cfg text
+*.conf text
+
+# Data files
+*.csv text
+*.tsv text
+*.npy binary
+*.npz binary
+*.h5 binary
+*.hdf5 binary
+*.nc binary
+*.db binary
+*.sqlite binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+*.ico binary
+*.tif binary
+*.tiff binary
+
+# Models
+*.h5 binary
+*.pth binary
+*.pt binary
+*.pkl binary
+*.joblib binary
+*.onnx binary
+
+# Jupyter
+*.ipynb binary
+
+# Shell scripts
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+*.fish text eol=lf
+
+# Windows scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Docker
+Dockerfile text
+.dockerignore text
+docker-compose*.yml text
+
+# Git
+.gitignore text
+.gitattributes text
+.gitmodules text
+
+# License and legal
+LICENSE text
+AUTHORS* text
+CODE_OF_CONDUCT* text
+
+# Lock files
+*.lock -diff
+package-lock.json -diff
+poetry.lock -diff
+
+# Linguist overrides
+docs/ generated linguist-generated=true
+*.min.js linguist-generated=true
+*.min.css linguist-generated=true
+
+# 🏜️ The desert breathes. DESERTAS decodes.

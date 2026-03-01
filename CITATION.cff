@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use DESERTAS in your research, please cite it as below."
+title: "DESERTAS: A Quantitative Framework for Decoding Geogenic Gas Emissions, Tectonic Pulse Detection, and Pre-Seismic Geochemical Forecasting in Arid Cratons"
+authors:
+  - family-names: "Baladi"
+    given-names: "Samir"
+    orcid: "https://orcid.org/0009-0003-8903-0029"
+    email: "gitdeeper@gmail.com"
+date-released: 2026-03-01
+doi: "10.14293/DESERTAS.2026.001"
+version: "1.0.0"
+license: "MIT"
+repository-code: "https://gitlab.com/gitdeeper4/desertas"
+url: "https://desertas.netlify.app"
+abstract: "DESERTAS introduces the first mathematically integrated, AI-driven geophysical framework for the systematic quantification of geogenic gas emissions from rock fissures in hyperarid environments. Built on eight physically orthogonal indicators spanning diurnal thermal flux, fissure conductivity, radon pulse dynamics, desiccation modulation, geogenic migration velocity, helium-4 geochronology, particulate-gas coupling, and seismic yield potential, DESERTAS transforms the continuous geochemical breath of desert rock fractures into a quantitative diagnostic tool for pre-seismic hazard assessment."
+keywords:
+  - "geogas"
+  - "radon precursors"
+  - "tectonic breathing"
+  - "arid craton"
+  - "fissure conductivity"
+  - "helium-4"
+  - "diurnal thermal flux"
+  - "desert geochemistry"
+  - "seismic forecasting"
+  - "continental shields"
