@@ -13,8 +13,10 @@
 [![Dataset](https://img.shields.io/badge/Dataset-Zenodo-blue)](https://doi.org/10.5281/zenodo.18820679)
 [![PyPI](https://img.shields.io/badge/PyPI-desertas%201.0.0-orange)](https://pypi.org/project/desertas/1.0.0/)
 [![Dashboard](https://img.shields.io/badge/Dashboard-Live-green)](https://desert-as.netlify.app)
+[![MetaArXiv](https://img.shields.io/badge/MetaArXiv-Preprint-blue)](https://osf.io/preprints/metaarxiv)
+[![ScienceOpen](https://img.shields.io/badge/ScienceOpen-Preprint-lightblue)](https://www.scienceopen.com/document?vid=717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066)
 [![OSF](https://img.shields.io/badge/OSF-Preregistered-blue)](https://doi.org/10.17605/OSF.IO/VZ6PS)
-[![ScienceOpen](https://img.shields.io/badge/ScienceOpen-Preprint-lightblue)](https://www.scienceopen.com)
+[![Supplemental](https://img.shields.io/badge/OSF-Supplemental%20Materials-blue)](https://osf.io/ua5p3)
 [![Open Data](https://img.shields.io/badge/Open%20Data-CC--BY%204.0-brightgreen)](https://doi.org/10.5281/zenodo.18820679)
 [![License: MIT](https://img.shields.io/badge/Code-MIT-orange)](LICENSE)
 [![No COI](https://img.shields.io/badge/COI-None%20Declared-green)](https://doi.org/10.14293/DESERTAS.2026.001)
@@ -501,24 +503,31 @@ DESERTAS is the **sixth framework** in a unified Bayesian multi-parameter resear
 | 📑 **Reports** | [desert-as.netlify.app/reports](https://desert-as.netlify.app/reports) |
 | 📄 **Research Paper** | [doi.org/10.14293/DESERTAS.2026.001](https://doi.org/10.14293/DESERTAS.2026.001) |
 | 💾 **Dataset (Zenodo)** | [doi.org/10.5281/zenodo.18820679](https://doi.org/10.5281/zenodo.18820679) |
+| 📰 **MetaArXiv Preprint** | [OSF MetaArXiv](https://osf.io/preprints/metaarxiv) |
+| 🌐 **ScienceOpen Preprint** | [SO-VID: 717a1bf8](https://www.scienceopen.com/document?vid=717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066) |
 | 📋 **OSF Preregistration** | [doi.org/10.17605/OSF.IO/VZ6PS](https://doi.org/10.17605/OSF.IO/VZ6PS) |
-| 🌐 **ScienceOpen Preprint** | [ScienceOpen](https://www.scienceopen.com/document?vid=717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066) |
+| 📁 **OSF Supplemental** | [osf.io/ua5p3](https://osf.io/ua5p3) |
 | 📦 **PyPI Package** | [pypi.org/project/desertas/1.0.0](https://pypi.org/project/desertas/1.0.0/) |
 | 🔬 **ORCID** | [0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029) |
 
 ---
 
-## 📰 Preprint
+## 📰 Preprints
 
-DESERTAS is published as an open-access preprint on **ScienceOpen Preprints** (March 1, 2026), under Creative Commons Attribution License CC BY 4.0. The preprint has been submitted to *Nature Geoscience* (Manuscript ID: DESERTAS-2026-001).
+DESERTAS is available as open-access preprints on two platforms, and has been submitted to *Nature Geoscience* (Manuscript ID: DESERTAS-2026-001, March 2026).
 
-> Baladi, S. (2026). *DESERTAS: Desert Emission Sensing & Energetic Rock-Tectonic Analysis System — A Quantitative Framework for Decoding Geogenic Gas Emissions, Tectonic Pulse Detection, and Pre-Seismic Geochemical Forecasting in Arid Cratons: The Desert Breathes.* ScienceOpen Preprints. [SO-VID: 717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066](https://www.scienceopen.com/document?vid=717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066)
+**MetaArXiv (OSF Preprints)** — pending moderator approval · CC BY 4.0
+**ScienceOpen Preprints** — SO-VID: 717a1bf8-b3ba-4ec3-9cf0-0f2b8eaf3066 · CC BY 4.0
 
-**Funding acknowledged:** National Geographic Society · Google Research · Ronin Institute
+> Baladi, S. (2026). *DESERTAS: The Desert Breathes — A Quantitative Framework for Decoding Geogenic Gas Emissions, Tectonic Pulse Detection, and Pre-Seismic Geochemical Forecasting in Arid Cratons.* Nature Geoscience. https://doi.org/10.14293/DESERTAS.2026.001
+
+**Supplemental materials:** [osf.io/ua5p3](https://osf.io/ua5p3)
+**Preregistration:** [doi.org/10.17605/OSF.IO/VZ6PS](https://doi.org/10.17605/OSF.IO/VZ6PS)
+**Funding:** National Geographic Society · Google Research · Ronin Institute
 
 ---
 
-
+## 🙏 Acknowledgments
 
 The author thanks the 36 national geological surveys and protected area authorities for monitoring infrastructure access; the USGS, ISC, and regional seismological networks for open-access earthquake catalogs; the **San community monitors** of the Northern Cape for traditional rock-breath observational records integrated under FPIC protocols; the **Wangkatja (Martu) traditional landowners** of the Western Gibson Desert for geological lineament knowledge informing station siting; the ESA Copernicus Program; and the Global Seismographic Network (GSN).
 
@@ -532,9 +541,7 @@ The author thanks the 36 national geological surveys and protected area authorit
 
 <div align="center">
 
-**DOI:** [10.14293/DESERTAS.2026.001](https://doi.org/10.14293/DESERTAS.2026.001) · 
-**Dataset:** [10.5281/zenodo.18820679](https://doi.org/10.5281/zenodo.18820679) · 
-**Dashboard:** [desert-as.netlify.app](https://desert-as.netlify.app) · **GitLab:** [gitlab.com/gitdeeper07/desertas](https://gitlab.com/gitdeeper07/desertas)
+**DOI:** [10.14293/DESERTAS.2026.001](https://doi.org/10.14293/DESERTAS.2026.001) · **Dataset:** [10.5281/zenodo.18820679](https://doi.org/10.5281/zenodo.18820679) · **Dashboard:** [desert-as.netlify.app](https://desert-as.netlify.app) · **GitLab:** [gitlab.com/gitdeeper07/desertas](https://gitlab.com/gitdeeper07/desertas)
 
 *The desert has always spoken. For the first time, DESERTAS has provided the vocabulary to understand what it is saying.*
 
