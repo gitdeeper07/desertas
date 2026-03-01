@@ -532,7 +532,9 @@ The author thanks the 36 national geological surveys and protected area authorit
 
 <div align="center">
 
-**DOI:** [10.14293/DESERTAS.2026.001](https://doi.org/10.14293/DESERTAS.2026.001) · **Dataset:** [10.5281/zenodo.18820679](https://doi.org/10.5281/zenodo.18820679) · **Dashboard:** [desert-as.netlify.app](https://desert-as.netlify.app) · **GitLab:** [gitlab.com/gitdeeper07/desertas](https://gitlab.com/gitdeeper07/desertas)
+**DOI:** [10.14293/DESERTAS.2026.001](https://doi.org/10.14293/DESERTAS.2026.001) · 
+**Dataset:** [10.5281/zenodo.18820679](https://doi.org/10.5281/zenodo.18820679) · 
+**Dashboard:** [desert-as.netlify.app](https://desert-as.netlify.app) · **GitLab:** [gitlab.com/gitdeeper07/desertas](https://gitlab.com/gitdeeper07/desertas)
 
 *The desert has always spoken. For the first time, DESERTAS has provided the vocabulary to understand what it is saying.*
 
